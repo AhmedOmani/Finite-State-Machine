@@ -3,7 +3,7 @@
 ## The code is generic you just need to change the five components for any Automata state machine which is :
 - List of states
 - Initial state
-- List of acceoting state
+- List of accepting state
 - Transition table
 - input sequence
 
