@@ -1,6 +1,6 @@
 ## Simple javascript code for simulate and validate the states for Automata State Machine
 
-- The code is generic you just need to change the five components for any Automata state machine which is :
+## The code is generic you just need to change the five components for any Automata state machine which is :
 - List of states
 - Initial state
 - List of acceoting state
