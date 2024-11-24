@@ -5,6 +5,6 @@
 - Initial state
 - List of accepting state
 - Transition table
-- input sequence
+- Input sequence
 
 ## After that let the code simulate the the input over the Autota State Machine and give you the results 
