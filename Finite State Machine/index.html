@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Finite State Machine detecting RegEx 01*(1v0)</h2>
+<script>
+    
+    const State = [
+        "No characters recevied" , //Index 0 
+        "Recieved initial 0" , // Index 1 
+        "Recieved 01*0" , //Index 2
+        "Reciecved 01*1" , //Index 3
+        "Doesnt match RegEx" , //Index 4
+        "Error" //Index 5
+    ];
+
+    const initialState = State[0] ;
+    const acceptingState = [State[2] , State[3]] ;
+    const input = "01 " ;
+    const transitionTable = {
+        0: [State[1] , State[4]] ,
+        1: [State[2] , State[3]] ,
+        2: [State[4] , State[4]] ,
+        3: [State[2] , State[3]] ,
+        4: [State[4] , State[4]] ,
+        5: [State[5] , State[5]]
+    };
+
+    const errorState = State[5] ;
+
+    function returnNextState(state , Wnput) {
+        if (!input.includes(Wnput) || !State.includes(state))
+            return errorState ;
+
+        return transitionTable[State.indexOf(state)][input.indexOf(Wnput)] ; 
+    }
+
+    let curState = initialState ;
+    const inputSequence = "011110" ;
+
+    for (i = 0 ; i < inputSequence.length ; i++) {
+        let curInput = inputSequence.charAt(i) ;
+        
+        document.write("<br>Current state : <strong> " + curState + "</strong> - Input : <strong> " + curInput + "</strong>" ) ;
+        
+        if (!input.includes(curInput))
+            curState = errorState ;
+        else
+            curState = returnNextState(curState , curInput) ;
+
+        document.write(" --> Next State: <strong>" + curState + "</strong>") ;
+        if (acceptingState.includes(curState)) {
+            document.write( " (accepting state)" ) ;
+        }
+    }
+
+    document.write("<br> Ending state : " + curState) ;
+    if(acceptingState.includes(curState))
+        document.write("(acceptingState)") ;
+
+
+
+</script>
+
+</body>
+</html>
